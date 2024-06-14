@@ -2,7 +2,6 @@ package main
 
 import (
 	"net/http"
-	"os"
 
 	"github.com/gin-gonic/gin"
 )
@@ -16,11 +15,6 @@ func getHomePageHandler(context *gin.Context) {
 func main() {
 	APP = gin.Default()
 	APP.GET("/status", getHomePageHandler)
-
-	if os.Getenv("LCP") == "LOCAL" {
-		APP.Run("localhost:8081")
-	} else {
-		PORT := "8080"
-		APP.Run(":" + PORT)
-	}
+	PORT := "8080"
+	APP.Run(":" + PORT)
 }
