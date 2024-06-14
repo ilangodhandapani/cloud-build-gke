@@ -20,7 +20,7 @@ func main() {
 	if os.Getenv("LCP") == "LOCAL" {
 		APP.Run("localhost:8081")
 	} else {
-		port := os.Getenv("PORT")
-		APP.Run(":" + port)
+		//port := os.Getenv("PORT")
+		APP.Run(":8080")
 	}
 }

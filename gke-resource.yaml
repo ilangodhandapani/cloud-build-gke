@@ -30,8 +30,3 @@ spec:
       containers:
       - name: myapp
         image: us-central1-docker.pkg.dev/flawless-lacing-392113/my-app-repo/hello-gcp:v1
-        env:
-        - name: LCP
-          value : QA
-        - name: PORT
-          value : 8080
