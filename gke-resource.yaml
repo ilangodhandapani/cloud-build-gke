@@ -14,7 +14,7 @@ metadata:
 spec:
   type: LoadBalancer
   selector:
-    app: myapp-green
+    app: myapp-blue
   ports:
   - port: 80
     targetPort: 8080
@@ -38,6 +38,38 @@ spec:
       containers:
       - name: myapp-green
         image: us-central1-docker.pkg.dev/flawless-lacing-392113/my-app-repo/hello-gcp:green
+        env:
+        - name: LCP 
+          valueFrom:
+            configMapKeyRef:
+              name: myapp-cm           
+              key: LCP 
+        - name: PORT
+          valueFrom:
+            configMapKeyRef:
+              name: myapp-cm
+              key: PORT
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: myapp-blue
+  labels:
+    app: myapp-blue
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: myapp-blue
+  template:
+    metadata:
+      labels:
+        app: myapp-blue
+    spec:
+      containers:
+      - name: myapp-blue
+        image: us-central1-docker.pkg.dev/flawless-lacing-392113/my-app-repo/hello-gcp:blue
         env:
         - name: LCP 
           valueFrom:

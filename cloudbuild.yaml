@@ -2,12 +2,12 @@ steps:
 
   # Build app
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['build', '-t', 'us-central1-docker.pkg.dev/flawless-lacing-392113/my-app-repo/hello-gcp:green', '.']
+    args: ['build', '-t', 'us-central1-docker.pkg.dev/flawless-lacing-392113/my-app-repo/hello-gcp:blue', '.']
     id: BUILD
 
   # Storage of the image
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['push', 'us-central1-docker.pkg.dev/flawless-lacing-392113/my-app-repo/hello-gcp:green']
+    args: ['push', 'us-central1-docker.pkg.dev/flawless-lacing-392113/my-app-repo/hello-gcp:blue']
     id: STORAGE
 
   # Deploy to GKE
