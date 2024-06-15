@@ -42,10 +42,10 @@ spec:
         - name: LCP 
           valueFrom:
             configMapKeyRef:
-              name: myapp-green-cm           
+              name: myapp-cm           
               key: LCP 
         - name: PORT
           valueFrom:
             configMapKeyRef:
-              name: myapp-green-cm
+              name: myapp-cm
               key: PORT
