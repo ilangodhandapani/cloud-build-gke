@@ -1,5 +1,13 @@
 ---
 apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: myapp-cm
+data:
+  LCP: QA
+  PORT: 8080
+---
+apiVersion: v1
 kind: Service
 metadata:
   name: myapp
@@ -30,3 +38,14 @@ spec:
       containers:
       - name: myapp
         image: us-central1-docker.pkg.dev/flawless-lacing-392113/my-app-repo/hello-gcp:v2
+        env:
+        - name: LCP 
+          valueFrom:
+            configMapKeyRef:
+              name: myapp-cm           
+              key: LCP 
+        - name: PORT
+          valueFrom:
+            configMapKeyRef:
+              name: myapp-cm
+              key: PORT

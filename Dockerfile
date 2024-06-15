@@ -26,7 +26,7 @@ COPY --from=builder /app/main .
 
 # Expose port 8080
 EXPOSE 8080
-#ENV LCP LOCAL
+ENV LCP LOCAL
 RUN apk add curl
 # Run Executable
 CMD ["./main"]
